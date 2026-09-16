@@ -1,4 +1,4 @@
-# AnimalTerrestrialization
+# No evidence for functional convergence in animal terrestrialization
 
 The repository contains the data and analysis scripts accompanying the manuscript Kasalo, N., Domazet-Lošo, M., Domazet-Lošo, T. No evidence for functional convergence in animal terrestrialization.
 
