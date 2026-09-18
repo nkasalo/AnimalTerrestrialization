@@ -11,7 +11,7 @@ The repository contains the following files:
 4. name_mapping.xlsx - updated names for taxa od interest
 5. tree_calib.txt - time-calibrated phylogeny from Wei. et al. Nature 649, 638–646 (2026)
 6. tree_v2.xml - uncalibrated phylogeny generated based on the calibrated tree from Wei. et al. Nature 649, 638–646 (2026)
-7. ps_mapping/gain_c011 - HG - node of origin mapping for Orthogroups from Wei. et al. Nature 649, 638–646 (2026)
+7. ps_mapping/gain_c011 - HG -> node of origin mapping for Orthogroups from Wei. et al. Nature 649, 638–646 (2026). Mapping was done using scripts from Domazet-Lošo et al. Nat Commun 15, 2663 (2024)
 8. Phylo_v1_allc_output - numbers of HGs gained at each node in each lineage
 9. results - output of permutation analyses (the first row represents the values derived from the 11 terrestrialization nodes, while the other 10,000 rows represent random permutations of nodes):
    a. permutations_noenrichment_gain - shared number of GO terms for each group of nodes (Fig. 1a and Supp. Fig. 1a in our manuscript)
