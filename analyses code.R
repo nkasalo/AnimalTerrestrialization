@@ -459,7 +459,7 @@ for (c in 10:10) {
     
     current_weighted_intersection$GOs = NULL
     
-    col_sums <- colSums(current_weighted_intersection, na.rm = TRUE)
+    col_sums <- rowMeans(current_weighted_intersection, na.rm = TRUE)
     avg_of_sums <- mean(col_sums)
   })
   
@@ -484,7 +484,7 @@ for (c in 10:10) {
   
   current_weighted_intersection$GOs = NULL
   
-  col_sums <- colSums(current_weighted_intersection, na.rm = TRUE)
+  col_sums <- rowMeans(current_weighted_intersection, na.rm = TRUE)
   avg_of_sums_terrestrial <- mean(col_sums)
   
   
@@ -784,7 +784,7 @@ for (c in 10:10) {
     
     current_weighted_intersection$GOs = NULL
     
-    col_sums <- colMeans(current_weighted_intersection, na.rm = TRUE)
+    col_sums <- rowMeans(current_weighted_intersection, na.rm = TRUE)
     avg_of_avg <- mean(col_sums)
   })
   
@@ -809,7 +809,7 @@ for (c in 10:10) {
   
   current_weighted_intersection$GOs = NULL
   
-  col_sums <- colMeans(current_weighted_intersection, na.rm = TRUE)
+  col_sums <- rowMeans(current_weighted_intersection, na.rm = TRUE)
   avg_of_sums_terrestrial <- mean(col_sums)
   
   
