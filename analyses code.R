@@ -394,6 +394,9 @@ for (c in 10:10) {
       
       
       current_weighted = as.data.frame(table(current_weighted))
+      #UNIQUE
+      current_weighted$Freq = 1
+      #
       
       current_sum = sum(current_weighted$Freq)
       current_weighted$Freq = current_weighted$Freq / current_sum
@@ -659,7 +662,7 @@ for (c in 10:10) {
     mutate(GOs = trimws(GOs)) %>%
     filter(GOs %in% GO_table$GOs) %>%
     group_by(representative, GOs) %>%
-    summarise(n_GO = n(), .groups = "drop") %>%
+    summarise(n_GO = 1, .groups = "drop") %>% # or n_GO = n() for within cluster counts
     group_by(representative) %>%
     mutate(
       total_GO = sum(n_GO),
