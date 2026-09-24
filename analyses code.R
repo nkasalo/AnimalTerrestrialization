@@ -462,7 +462,7 @@ for (c in 10:10) {
     
     current_weighted_intersection$GOs = NULL
     
-    col_sums <- rowMeans(current_weighted_intersection, na.rm = TRUE)
+    col_sums <- colSums(current_weighted_intersection, na.rm = TRUE)
     avg_of_sums <- mean(col_sums)
   })
   
@@ -487,7 +487,7 @@ for (c in 10:10) {
   
   current_weighted_intersection$GOs = NULL
   
-  col_sums <- rowMeans(current_weighted_intersection, na.rm = TRUE)
+  col_sums <- colSums(current_weighted_intersection, na.rm = TRUE)
   avg_of_sums_terrestrial <- mean(col_sums)
   
   
@@ -662,13 +662,8 @@ for (c in 10:10) {
     mutate(GOs = trimws(GOs)) %>%
     filter(GOs %in% GO_table$GOs) %>%
     group_by(representative, GOs) %>%
-    summarise(n_GO = 1, .groups = "drop") %>% # or n_GO = n() for within cluster counts
-    group_by(representative) %>%
-    mutate(
-      total_GO = sum(n_GO),
-      fraction = n_GO / total_GO
-    ) %>%
-    ungroup()
+    summarise(n_GO = 1, .groups = "drop") # or n_GO = n() for within cluster counts
+    
   
   
   #Group by cluster representative and combine all annotations of that cluster into a list of unique values
@@ -724,7 +719,14 @@ for (c in 10:10) {
     if (nrow(subset_cluster) > 1) {
       current_weighted = subset(current_cluster_weights, representative %in% subset_mapping$representative)
       
-      current_weighted = current_weighted %>% group_by(GOs) %>% summarise(Freq = mean(fraction))
+       n_unique_clusters = length(unique(current_weighted$representative))
+        current_weighted = current_weighted %>%
+          ungroup() %>%
+          group_by(GOs) %>%
+          summarise(
+            Freq = sum(n_GO) / n_unique_clusters,
+            .groups = "drop"
+          )
       
       colnames(current_weighted) = c("GOs", spec_name)
       
